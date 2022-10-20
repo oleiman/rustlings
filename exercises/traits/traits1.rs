@@ -9,7 +9,6 @@
 // implementing this trait.
 // Execute `rustlings hint traits1` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
 
 trait AppendBar {
     fn append_bar(self) -> Self;
@@ -17,6 +16,13 @@ trait AppendBar {
 
 impl AppendBar for String {
     //Add your code here
+    fn append_bar(self) -> Self {
+        // NOTE(oren): this has move semantics, we move self into a local
+        // then return return the local I guess? does this destroy the object?
+        let mut res = self;
+        res.push_str("Bar");
+        res
+    }
 }
 
 fn main() {
